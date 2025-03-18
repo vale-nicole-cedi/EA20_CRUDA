@@ -1,0 +1,7 @@
+{
+  "name": "EA20_CRUDA",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
