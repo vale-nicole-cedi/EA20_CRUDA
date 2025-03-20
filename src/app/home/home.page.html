@@ -5,24 +5,25 @@
     </ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="logout()">Logout</ion-button>
-    </ion-buttons>s
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  
-  <ion-item>
-    <ion-input [(ngModel)]="marketItem" placeholder="Apples, Cookies, etc."></ion-input>
-    <ion-button (click)="addItem()" color="primary">
-      {{ editingItemId ? 'Actualizar' : 'Agregar' }}
-    </ion-button>
-  </ion-item>
+<ion-content class="ion-padding bucket-list">
+  <div class="input-container">
+    <ion-item class="input-item">
+      <ion-input [(ngModel)]="itemText" placeholder="Write your dream goal..."></ion-input>
+      <ion-button (click)="addItem()" color="primary">
+        {{ editingItemId ? 'Actualizar' : 'Agregar' }}
+      </ion-button>
+    </ion-item>
+  </div>
 
-  <ion-list>
-    <ion-item *ngFor="let task of tasks$ | async">
-      <ion-label>{{ market.item }}</ion-label>
-      <ion-button (click)="editItem(item)" color="warning">Edit</ion-button>
-      <ion-button (click)="deleteItem(item.id!)" color="danger">Delete</ion-button>
+  <ion-list class="items-list">
+    <ion-item *ngFor="let item of items$ | async" class="task-item">
+      <ion-label class="task-text">{{ item.title }}</ion-label>
+      <ion-button (click)="editItem(item)" color="warning">✏️</ion-button>
+      <ion-button (click)="deleteItem(item.id!)" color="danger">🗑️</ion-button>
     </ion-item>
   </ion-list>
 </ion-content>
